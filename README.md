@@ -8,7 +8,7 @@
 ```
 
 ## 2.html基础结构图
-![图片名称](https://github.com/laoa1717/img-store/blob/master/%E5%9B%BE%E7%89%872.png?raw=true)  
+![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%871.png?raw=true)  
 
 **2.1  表格头部固定区域scroll-table-head**
 ```html
