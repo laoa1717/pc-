@@ -72,13 +72,17 @@
             </c:if>
         </div>
         <!-- 表格侧边栏固定区域 -->
+        <!-- style="width: 这个宽度得自行调试才最准确;" -->
         <div class="scroll-table-fixed-left hide" style="width: 385px;">
             <!-- 表格侧边栏head区域 -->
             <div class="scroll-table-fixed-left-head">
                 <table class="tb1 no_border_top">
                     <thead>
                         <tr>
-                            <th style="width: 9em;">项目名称</th>
+                            <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
+                            <!-- 和上面的表格头部固定区域保持一致-->
+                            <!-- 要固定左边几列就写几个th -->
+                            <th style="width: 9em;">头部1</th>
                         </tr>
                     </thead>
                 </table>
@@ -87,30 +91,22 @@
             <div class="scroll-table-fixed-left-body">
                 <table class="tb1">
                     <tbody>
-                        <c:if test="${resList.size()>0}">
-                            <c:forEach items="${resList}" var="detail" varStatus="s">
-                                <tr>
-                                    <td style="width: 9em;" data-name="项目名称">
-                                        <div class="td_div">${detail.projectName }</div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:if>
+                        <tr>
+                            <td style="width: 9em;" data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <!-- 有几列就写几个td的数据 -->
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>...</tr>
+                        <tr>...</tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <!-- 表格自定义横向滚动条 -->
-        <div class="scroll-bar-box">
-            <div class="left-arrow">
-                <i class="iconfont icon-zuojiantoushixinxiao arrow"></i>
-            </div>
-            <div class="scroll-bar"></div>
-            <div class="right-arrow">
-                <i class="iconfont icon-youjiantoushixinxiao arrow"></i>
-            </div>
-        </div>
-        <!-- <c:if test="${resList.size()>0}">
+        <c:if test="${resList.size()>0}">
             <div class="scroll-bar-box">
                 <div class="left-arrow">
                     <i class="iconfont icon-zuojiantoushixinxiao arrow"></i>
@@ -120,7 +116,7 @@
                     <i class="iconfont icon-youjiantoushixinxiao arrow"></i>
                 </div>
             </div>
-        </c:if> -->
+        </c:if>
     </div>
 </body>
 </html>
