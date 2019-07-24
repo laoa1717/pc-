@@ -1,5 +1,9 @@
 /* 表格组件样式 */
 .hide{display: none !important;}
+.fix_tab {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
 .scroll-table-box {
 	position: relative;
 	overflow: hidden;
@@ -83,6 +87,17 @@
   font-size:12px;
   *display: inline;
   *zoom: 1;
+}
+.scroll-table-box .tb1 td .td_div a{
+  display: inline-block;
+  height: 12px;
+  line-height: 12px;
+  font-size:12px;
+  color: #2390dc;
+}
+.scroll-table-box .tb1 td .td_div a:hover{
+  color: #23a5ff;
+  text-decoration: underline;
 }
 .scroll-table-box .tb1 .bug-tr td{
 	border-bottom: none;
