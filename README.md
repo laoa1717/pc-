@@ -89,6 +89,7 @@
                     <!-- 和上面的表格头部固定区域保持一致-->
                     <!-- 要固定左边几列就写几个th -->
                     <th style="width: 9em;">头部1</th>
+                    <th style="width: 8em;">头部2</th>
                 </tr>
             </thead>
         </table>
@@ -102,7 +103,7 @@
                         <div class="td_div">...</div>
                     </td>
                     <!-- 有几列就写几个td的数据 -->
-                    <td>...</td>
+                    <td style="width: 8em;" data-name="头部2">...</td>
                     <td>...</td>
                 </tr>
                 <tr>...</tr>
