@@ -20,7 +20,6 @@
         <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
         <th style="width: 9em;">头部1</th>
         <th style="width: 8em;">头部2</th>
-        <th style="width: 7em;">头部3</th>
         ............
       </tr>
     </thead>
@@ -39,7 +38,6 @@
                 <!-- 和上面的表格头部固定区域保持一致-->
                 <th style="width: 9em;">头部1</th>
                 <th style="width: 8em;">头部2</th>
-                <th style="width: 7em;">头部3</th>
             </tr>
         </thead>
         <tbody>
@@ -50,11 +48,10 @@
                     <!-- 内容外层要包class="td_div"的div层 -->
                     <div class="td_div">...</div>
                 </td>
-
-                <!-- 特殊情况,如果里层是input输入框,需要加style="font-size: 0;line-height: 0;" -->
-                <td style="width: 4em;" data-name="运费">
-                    <div class="td_div" style="font-size: 0;line-height: 0;">
-                        <input type="text">
+                <td style="width: 8em;" data-name="头部2">
+                    <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                    <div class="td_div fix_tab">
+                        <input type="text"> <!-- 或者<a>...</a> -->
                     </div>
                 </td>
             </tr>
