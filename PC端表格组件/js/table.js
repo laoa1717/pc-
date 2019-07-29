@@ -290,36 +290,36 @@ function tableSwiperFunc(init) {
     
 }
 function calcRowHeight() {
-		var row_h = [];
+	var row_h = [];
   	var self = this;
-  	$('.scroll-table-fixed-left-head tr').height($('.scroll-table-head tr').height());
-		$('.scroll-table-body tbody tr').each(function(index, item) {
-			var h = $(item).height();
-			row_h.push(h);
-		});
-		$('.scroll-table-fixed-left-body tr').each(function(index, item) {
-			if (self.tableHasRowspan) {
-				var rowSpan = parseInt($(item).find('td').attr('rowspan')) ? parseInt($(item).find('td').attr('rowspan')) : 0;
-				var total_h = 0;
-				var start = index;
-				var end = index + rowSpan;
-				var array_h = row_h.slice(start,end);
-				if (array_h.length > 0) {
-					array_h.forEach(function(item) {
-						total_h = com.accAdd(total_h, item);
-					});
-					if (total_h > 0) {
-						$(item).height(total_h);
-					}
+  	$('.scroll-table-fixed-left-head tr th').height($('.scroll-table-head thead').height());
+	$('.scroll-table-body tbody tr').each(function(index, item) {
+		var h = $(item).height();
+		row_h.push(h);
+	});
+	$('.scroll-table-fixed-left-body tr').each(function(index, item) {
+		if (self.tableHasRowspan) {
+			var rowSpan = parseInt($(item).find('td').attr('rowspan')) ? parseInt($(item).find('td').attr('rowspan')) : 0;
+			var total_h = 0;
+			var start = index;
+			var end = index + rowSpan;
+			var array_h = row_h.slice(start,end);
+			if (array_h.length > 0) {
+				array_h.forEach(function(item) {
+					total_h = com.accAdd(total_h, item);
+				});
+				if (total_h > 0) {
+					$(item).height(total_h);
 				}
-				if ($(item).hasClass('heji-tr')) {
-					$(item).height(row_h[index]);
-				}
-			} else {
+			}
+			if ($(item).hasClass('heji-tr')) {
 				$(item).height(row_h[index]);
 			}
-			
-		});
+		} else {
+			$(item).height(row_h[index]);
+		}
+		
+	});
 }
 
 /*固定表格滑动脚本结束*/
