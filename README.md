@@ -144,19 +144,19 @@ calcRowHeight();
 /*ec碰到的特殊情况*/
 showLoadingDialog("正在查询");
 	setTimeout(function(){
-			tableSwiperFunc({
-				wrap_body: $(".scroll-table-body")[0],
-				scroll_body: $(".scroll-table-body table")[0],
-				wrap_head: $(".scroll-table-head")[0],
-				scroll_head: $(".scroll-table-head table")[0],
-				left_wrap_body: $(".scroll-table-fixed-left-body")[0],
-				left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
-				horizontal_bar: $('.scroll-bar')[0],
-				vertical_bar: $('.v-scroll-bar')[0],
-			});
-			calcRowHeight();
-			hideLoadingDialog();
-	},500);
+	tableSwiperFunc({
+		wrap_body: $(".scroll-table-body")[0],
+		scroll_body: $(".scroll-table-body table")[0],
+		wrap_head: $(".scroll-table-head")[0],
+		scroll_head: $(".scroll-table-head table")[0],
+		left_wrap_body: $(".scroll-table-fixed-left-body")[0],
+		left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
+		horizontal_bar: $('.scroll-bar')[0],
+		vertical_bar: $('.v-scroll-bar')[0],
+	});
+	calcRowHeight();
+	hideLoadingDialog();
+},500);
 ```
 
 
