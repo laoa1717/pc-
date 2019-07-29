@@ -126,7 +126,38 @@
 </c:if>
 ```
 
+## 3.script调用脚本
+```js
+/*固定表格滑动脚本*/
+tableSwiperFunc({
+  wrap_body: $(".scroll-table-body")[0],
+  scroll_body: $(".scroll-table-body table")[0],
+  wrap_head: $(".scroll-table-head")[0],
+  scroll_head: $(".scroll-table-head table")[0],
+  left_wrap_body: $(".scroll-table-fixed-left-body")[0],
+  left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
+  horizontal_bar: $('.scroll-bar')[0],
+  vertical_bar: $('.v-scroll-bar')[0],
+});
+calcRowHeight();
 
+/*ec碰到的特殊情况*/
+showLoadingDialog("正在查询");
+	setTimeout(function(){
+			tableSwiperFunc({
+				wrap_body: $(".scroll-table-body")[0],
+				scroll_body: $(".scroll-table-body table")[0],
+				wrap_head: $(".scroll-table-head")[0],
+				scroll_head: $(".scroll-table-head table")[0],
+				left_wrap_body: $(".scroll-table-fixed-left-body")[0],
+				left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
+				horizontal_bar: $('.scroll-bar')[0],
+				vertical_bar: $('.v-scroll-bar')[0],
+			});
+			calcRowHeight();
+			hideLoadingDialog();
+	},500);
+```
 
 
 
