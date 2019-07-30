@@ -128,9 +128,9 @@
 
 ## 3.script调用脚本
 ***复合型 thead***
-![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%872.png?raw=true)
-***非复合型 thead***
 ![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%873.png?raw=true)
+***非复合型 thead***
+![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%872.png?raw=true)
 ```js
 $(function () {
     /*固定表格滑动脚本*/
