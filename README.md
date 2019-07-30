@@ -1,5 +1,5 @@
 # 教学文档  
-## 1.引入文件  
+## 1.引入文件 
 ```
 <link rel="stylesheet" href="./css/table.css">
 <link rel="stylesheet" href="./scroll_bar_fonts/iconfont.css">
@@ -15,7 +15,7 @@
 ```html
 <!-- 表格头部固定区域 -->
 <div class="scroll-table-head">
-  <table class="tb1">
+  <table class="tb1 tb2">
     <thead>
       <tr>
         <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -32,7 +32,7 @@
 ```html
 <!-- 表格主体区域 -->
 <div class="scroll-table-body">
-    <table border="0" cellspacing="0" cellpadding="0" class="tb1">
+    <table class="tb1 tb2">
         <thead>
             <tr>
                 <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -79,11 +79,10 @@
 ### 2.3  表格侧边栏固定区域scroll-table-fixed-left
 ```html
 <!-- 表格侧边栏固定区域 -->
-<!-- style="width: 这个宽度得自行调试才最准确;" -->
-<div class="scroll-table-fixed-left hide" style="width: 385px;">
+<div class="scroll-table-fixed-left hide">
     <!-- 表格侧边栏head区域 -->
     <div class="scroll-table-fixed-left-head">
-        <table class="tb1 no_border_top">
+        <table class="tb1 tb2 no_border_bottom">
             <thead>
                 <tr>
                     <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -97,7 +96,7 @@
     </div>
     <!-- 表格侧边栏body区域 -->
     <div class="scroll-table-fixed-left-body">
-        <table class="tb1">
+        <table class="tb1 tb2">
             <tbody>
                 <tr>
                     <td style="width: 9em;" data-name="头部1">
@@ -129,22 +128,26 @@
 
 ## 3.script调用脚本
 ```js
-/*固定表格滑动脚本*/
-tableSwiperFunc({
-  wrap_body: $(".scroll-table-body")[0],
-  scroll_body: $(".scroll-table-body table")[0],
-  wrap_head: $(".scroll-table-head")[0],
-  scroll_head: $(".scroll-table-head table")[0],
-  left_wrap_body: $(".scroll-table-fixed-left-body")[0],
-  left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
-  horizontal_bar: $('.scroll-bar')[0],
-  vertical_bar: $('.v-scroll-bar')[0],
-});
-calcRowHeight();
+$(function () {
+    /*固定表格滑动脚本*/
+    var fixThead = false; // 是否为复合型thead
+    tableSwiperFunc({
+        wrap_body: $(".scroll-table-body")[0],
+        scroll_body: $(".scroll-table-body table")[0],
+        wrap_head: $(".scroll-table-head")[0],
+        scroll_head: $(".scroll-table-head table")[0],
+        left_wrap_body: $(".scroll-table-fixed-left-body")[0],
+        left_scroll_body: $(".scroll-table-fixed-left-body table")[0],
+        horizontal_bar: $('.scroll-bar')[0],
+        vertical_bar: $('.v-scroll-bar')[0]
+    });
+    calcRowHeight(fixThead);
+})
 
 /*ec碰到的特殊情况*/
 showLoadingDialog("正在查询");
-	setTimeout(function(){
+setTimeout(function(){
+	var fixThead = true; //是否为复合型thead
 	tableSwiperFunc({
 		wrap_body: $(".scroll-table-body")[0],
 		scroll_body: $(".scroll-table-body table")[0],
@@ -155,7 +158,7 @@ showLoadingDialog("正在查询");
 		horizontal_bar: $('.scroll-bar')[0],
 		vertical_bar: $('.v-scroll-bar')[0],
 	});
-	calcRowHeight();
+	calcRowHeight(fixThead);
 	hideLoadingDialog();
 },500);
 ```
