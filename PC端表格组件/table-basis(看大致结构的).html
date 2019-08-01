@@ -15,7 +15,7 @@
     <div class="scroll-table-box">
         <!-- 表格头部固定区域 -->
         <div class="scroll-table-head">
-            <table class="tb1">
+            <table class="tb1 tb2">
                 <thead>
                     <tr>
                         <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -27,7 +27,7 @@
         </div>
         <!-- 表格主体区域 -->
         <div class="scroll-table-body">
-            <table border="0" cellspacing="0" cellpadding="0" class="tb1">
+            <table class="tb1 tb2">
                 <thead>
                     <tr>
                         <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -71,11 +71,10 @@
             </c:if>
         </div>
         <!-- 表格侧边栏固定区域 -->
-        <!-- style="width: 这个宽度得自行调试才最准确;" -->
-        <div class="scroll-table-fixed-left hide" style="width: 385px;">
+        <div class="scroll-table-fixed-left hide">
             <!-- 表格侧边栏head区域 -->
             <div class="scroll-table-fixed-left-head">
-                <table class="tb1 no_border_top">
+                <table class="tb1 tb2 no_border_bottom">
                     <thead>
                         <tr>
                             <!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
@@ -89,7 +88,7 @@
             </div>
             <!-- 表格侧边栏body区域 -->
             <div class="scroll-table-fixed-left-body">
-                <table class="tb1">
+                <table class="tb1 tb2">
                     <tbody>
                         <tr>
                             <td style="width: 9em;" data-name="头部1">
@@ -126,7 +125,7 @@
 <script>
 $(function () {
     /*固定表格滑动脚本*/
-    var fixThead = false; // 是否为复合型thead
+    var fixThead = false; // 是否为复合型thead boolean(true||false)
     tableSwiperFunc({
         wrap_body: $(".scroll-table-body")[0],
         scroll_body: $(".scroll-table-body table")[0],
