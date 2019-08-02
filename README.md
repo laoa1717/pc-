@@ -43,13 +43,12 @@
         </thead>
         <tbody>
             <tr>
-                <!-- style="width: 1.宽度自行定制(必填) 2.和头部的列宽一致;" -->
                 <!-- data-name="和头部的名称保持一致" -->
-                <td style="width: 9em;" data-name="头部1">
+                <td data-name="头部1">
                     <!-- 内容外层要包class="td_div"的div层 -->
                     <div class="td_div">...</div>
                 </td>
-                <td style="width: 8em;" data-name="头部2">
+                <td data-name="头部2">
                     <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
                     <div class="td_div fix_tab">
                         <input type="text"> <!-- 或者<a>...</a> -->
