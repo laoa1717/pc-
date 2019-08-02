@@ -1,4 +1,5 @@
 # 教学文档  
+***效果请看 --->PC端表格组件 / table.html***
 ## 1.引入文件 
 ```
 <link rel="stylesheet" href="./css/table.css">
