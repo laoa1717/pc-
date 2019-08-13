@@ -1,6 +1,9 @@
 # 教学文档  
-***效果请看 --->PC端表格组件 / table.html***  
-***大致结构请看 --->PC端表格组件 / table-basis(看大致结构的).html***
+***复合型表格案例   ----->  PC端表格组件 / table.html(复合型)***
+![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%873.png?raw=true)
+***非复合型表格   ----->   PC端表格组件 / table.html(非复合型)***
+![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%872.png?raw=true)
+***大致结构请看   ----->    PC端表格组件 / table-basis(看大致结构).html***
 ## 1.引入文件 
 ```
 <link rel="stylesheet" href="./css/table.css">
@@ -47,31 +50,14 @@
 ```
 
 ## 3.script调用脚本
-***复合型 thead***
-![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%873.png?raw=true)
-***非复合型 thead***
-![图片名称](https://github.com/laoa1717/img-store/blob/master/pc-table-img/%E5%9B%BE%E7%89%872.png?raw=true)
 ```js
 $(function () {
 	/*固定表格滑动脚本*/
 	initTable({
-		colNum: 4,//左边固定的列数,默认为0
+		colNum: 2,//左边固定的列数,默认为0
 		maxHeight: 400,//可视区最大高度,默认400px,低于200px按200px计算
-		fixThead: false,// 是否为复合型thead,默认为false
 	});
 })
-
-/*ec碰到的特殊情况,此情况发生于页面后台数据还没传过来,表格脚本就执行了,导致表格脚本执行混乱*/
-showLoadingDialog("正在查询");
-setTimeout(function(){
-	/*固定表格滑动脚本*/
-	initTable({
-		colNum: 4,//左边固定的列数,默认为0
-		maxHeight: 400,//可视区最大高度,默认400px,低于200px按200px计算
-		fixThead: false,// 是否为复合型thead,默认为false
-	});
-	hideLoadingDialog();
-},500);
 ```
 
 
