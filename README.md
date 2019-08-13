@@ -6,9 +6,9 @@
 ***大致结构请看   ----->    PC端表格组件 / table-basis(看大致结构).html***
 ## 1.引入文件 
 ```
-<link rel="stylesheet" href="./css/table.css">
+<link rel="stylesheet" href="./css/table.css"> // ec项目组用cyq-table.css
 <link rel="stylesheet" href="./scroll_bar_fonts/iconfont.css">
-<script src="./js/jquery-1.11.1.js"></script> //jQuery版本视项目而定
+<script src="./js/jquery-1.11.1.js"></script> // jQuery版本视项目而定
 <script src="./js/move.js"></script>
 <script src="./js/table.js"></script>
 ```
@@ -18,7 +18,7 @@
 <div class="scroll-table-box">
 	<!-- 表格主体区域 -->
 	<div class="scroll-table-body">
-	    <table class="tb1 tb2">
+	    <table class="tb1 tb_03">
 		<thead>
 		    <tr>
 			<!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
