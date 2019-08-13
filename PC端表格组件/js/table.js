@@ -1,5 +1,75 @@
-/*固定表格滑动脚本开始*/
-function tableSwiperFunc() {
+function initTable(init) {
+	if (!init.colNum || init.colNum < 0) {
+		init.colNum = 0;
+	}
+	//固定头部
+	var $theadHtml = $(".scroll-table-body").find('thead').clone();
+	var $thead = $('<div class="scroll-table-head"><table class="tb1 tb2"></table></div>');
+	$thead.find('table').append($theadHtml);
+	$(".scroll-table-body").before($thead[0]);
+
+	//滚动条
+	var vScrollBarBox = '<div class="v-scroll-bar-box">\
+                                <div class="up-arrow">\
+                                    <i class="iconfont icon-shangjiantoushixinxiao arrow"></i>\
+                                </div>\
+                                <div class="v-scroll-bar"></div>\
+                                <div class="down-arrow">\
+                                    <i class="iconfont icon-xiajiantoushixinxiao arrow"></i>\
+                                </div>\
+                            </div>';
+	$(".scroll-table-body").append(vScrollBarBox);
+	var hScrollBarBox = '<div class="scroll-bar-box">\
+                                <div class="left-arrow">\
+                                    <i class="iconfont icon-zuojiantoushixinxiao arrow"></i>\
+                                </div>\
+                                <div class="scroll-bar"></div>\
+                                <div class="right-arrow">\
+                                    <i class="iconfont icon-youjiantoushixinxiao arrow"></i>\
+                                </div>\
+                            </div>';
+	$(".scroll-table-box").append(hScrollBarBox);
+
+	//左侧固定部分
+	var scrollTableFixedLeftHtml = '<div class="scroll-table-fixed-left hide">\
+										<div class="scroll-table-fixed-left-head">\
+											<table class="tb1 tb2">\
+											</table>\
+										</div>\
+										<div class="scroll-table-fixed-left-body">\
+											<table class="tb1 tb2 no_border_top">\
+											</table>\
+										</div>\
+									</div>';
+	$(".scroll-table-box").append(scrollTableFixedLeftHtml);
+
+	var cloneThead = $(".scroll-table-body").find('thead').clone();
+	var cloneTbody = $(".scroll-table-body").find('tbody').clone();
+	var thWidth = calThWidth();
+
+	$('.scroll-table-fixed-left-head table').append(cloneThead);
+	$('.scroll-table-fixed-left-body table').append(cloneTbody);
+	$('.scroll-table-fixed-left-body table tr').each(function (index, trItem) {
+		$(trItem).find('td').each(function (index2, tdItem) {
+			$(tdItem).css({
+				width: thWidth[index2].width
+			});
+		});
+	});
+	//设置可视区最大高度
+	if (init.maxHeight >= 0) {
+		if (init.maxHeight < 200) {
+			init.maxHeight = 200;
+		}
+		$('.scroll-table-body').css({ maxHeight: init.maxHeight });
+	}
+	init.colNum = calColNum(init.colNum);
+	tableSwiperFunc(init.colNum);
+	calcRowHeight();
+}
+
+//表格滚动条事件
+function tableSwiperFunc(colNum) {
 	/*表格主滑动区域*/
 	var wrap_body = $(".scroll-table-body")[0];
 	var scroll_body = $(".scroll-table-body table")[0];
@@ -292,30 +362,22 @@ function tableSwiperFunc() {
 
 	});
 
-	function calcLeftTableWidth() {
+	function calcLeftTableWidth(colNum) {
 		var W = 0;
-		var colNum = $(".scroll-table-fixed-left-body table tbody tr:eq(0) td").length;
-		$(".scroll-table-body table tbody tr:eq(0) td").each(function (index, item) {
+		var thWidth = calThWidth()
+		$.each(thWidth, function(index, obj){
 			if (index < colNum) {
-				W += $(item).outerWidth();
+				W += obj.width;
 			}
 		});
 		$(".scroll-table-fixed-left").outerWidth(W + 1);
 	}
-	calcLeftTableWidth();
+	calcLeftTableWidth(colNum);
 }
 
-function calcRowHeight(fixThead) {
+//计算左边固定列每行行高
+function calcRowHeight() {
 	var row_h = [];
-	if (fixThead) {
-		$(".scroll-table-fixed-left-head tr th").height(
-			$(".scroll-table-head thead").height()
-		);
-	} else {
-		$(".scroll-table-fixed-left-head tr th").outerHeight(
-			$(".scroll-table-head thead th").outerHeight()
-		);
-	}
 	$(".scroll-table-body tbody tr").each(function (index, item) {
 		var h = $(item).height();
 		row_h.push(h);
@@ -328,83 +390,50 @@ function calcRowHeight(fixThead) {
 	});
 }
 
-function initTable(init) {
-	if (!init.colNum || init.colNum<0) {
-		init.colNum = 0;
-	}
-	//固定头部
-	var thArray = $(".scroll-table-body").find('thead tr th').clone();
-	var $thead = $('<div class="scroll-table-head"><table class="tb1 tb2"><thead><tr></tr></thead></table></div>');
-	$.each(thArray, function(index,thItem) {
-		$thead.find('tr').append(thItem);
-	});
-	$(".scroll-table-body").before($thead[0]);
-
-	//滚动条
-	var vScrollBarBox = '<div class="v-scroll-bar-box">\
-                                <div class="up-arrow">\
-                                    <i class="iconfont icon-shangjiantoushixinxiao arrow"></i>\
-                                </div>\
-                                <div class="v-scroll-bar"></div>\
-                                <div class="down-arrow">\
-                                    <i class="iconfont icon-xiajiantoushixinxiao arrow"></i>\
-                                </div>\
-                            </div>';
-	$(".scroll-table-body").append(vScrollBarBox);
-	var hScrollBarBox = '<div class="scroll-bar-box">\
-                                <div class="left-arrow">\
-                                    <i class="iconfont icon-zuojiantoushixinxiao arrow"></i>\
-                                </div>\
-                                <div class="scroll-bar"></div>\
-                                <div class="right-arrow">\
-                                    <i class="iconfont icon-youjiantoushixinxiao arrow"></i>\
-                                </div>\
-                            </div>';
-	$(".scroll-table-box").append(hScrollBarBox);
-
-	//左侧固定部分
-	var scrollTableFixedLeftHtml = '<div class="scroll-table-fixed-left hide">\
-										<div class="scroll-table-fixed-left-head">\
-											<table class="tb1 tb2">\
-												<thead>\
-													<tr>\
-													</tr>\
-												</thead>\
-											</table>\
-										</div>\
-										<div class="scroll-table-fixed-left-body">\
-											<table class="tb1 tb2 no_border_top">\
-												<tbody>\
-												</tbody>\
-											</table>\
-										</div>\
-									</div>';
-	$(".scroll-table-box").append(scrollTableFixedLeftHtml);
-
-	var thArrayLimit = $(".scroll-table-body").find('thead tr th').clone().slice(0, init.colNum);
-	$.each(thArrayLimit, function (index, thItem) {
-		$('.scroll-table-fixed-left-head thead tr').append(thItem);
-	});
-
-	$('.scroll-table-body tbody tr').each(function (index1, trItem) {
-		var $newTr = $('<tr></tr>');
-		var tdArray = $(trItem).find('td').clone().slice(0, init.colNum);
-		$.each(tdArray, function(index2,tdItem){
-			$(tdItem).css({ width: $(thArrayLimit[index2]).outerWidth()});
-			$newTr.append(tdItem);
-		});
-		$('.scroll-table-fixed-left-body tbody').append($newTr[0]);
-	});
-	
-	//设置可视区最大高度
-	if (init.maxHeight>=0) {
-		if (init.maxHeight<200) {
-			init.maxHeight = 200;
+//得到每个th和子th宽度
+function calThWidth() {
+	var thWidth = [];
+	var thArray = $(".scroll-table-body").find('thead tr:eq(0) th').clone();
+	var colSpanNow = 0;
+	var colSpanNowIndex = 1;
+	var colSpanIndexArray = [0];
+	//计算每个colspan索引
+	$.each(thArray, function (index, thItem) {
+		var colSpan = parseInt($(thItem).attr('colspan'));
+		if (colSpan && colSpan > 1) {
+			colSpanNow += colSpan;
+			colSpanIndexArray.push(colSpanNow);
 		}
-		$('.scroll-table-body').css({maxHeight: init.maxHeight});
-	}
-
-	tableSwiperFunc();
-	calcRowHeight(init.fixThead);
+	});
+	$('.scroll-table-head tr:eq(0) th').each(function (index, thItem) {
+		var thObj = {};
+		if ($(thItem).attr('colspan') && $(thItem).attr('colspan') > 1) {
+			var array = $(".scroll-table-body").find('thead tr:eq(1) th').clone().slice(colSpanIndexArray[colSpanNowIndex - 1], colSpanIndexArray[colSpanNowIndex]);
+			colSpanNowIndex++;
+			$.each(array, function (index2, thItem2) {
+				var childObj = {};
+				childObj.width = parseInt($(thItem).css('width')) / array.length;
+				childObj.name = $(thItem2).html();
+				thWidth.push(childObj);
+			});
+			return;
+		}
+		thObj.width = parseInt($(thItem).css('width'));
+		thObj.name = $(thItem).html();
+		thWidth.push(thObj);
+	});
+	return thWidth;
 }
-/*固定表格滑动脚本结束*/
+
+//计算正确的固定列数
+function calColNum(colNum) {
+	var o_colNum = colNum;
+	var thArray = $(".scroll-table-body").find('thead tr:eq(0) th').clone().slice(0, colNum);
+	$.each(thArray, function (index, thItem) {
+		var colSpan = parseInt($(thItem).attr('colspan'));
+		if (colSpan && colSpan > 1) {
+			o_colNum += colSpan - 1;
+		}
+	});
+	return o_colNum;
+}

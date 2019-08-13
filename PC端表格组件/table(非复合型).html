@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/table.css">
+    <link rel="stylesheet" href="./scroll_bar_fonts/iconfont.css">
+    <script src="./js/jquery-1.11.1.js"></script>
+    <script src="./js/move.js"></script>
+    <script src="./js/table.js"></script>
+    <title>PC端表格组件(非复合型)</title>
+    <style>
+        .showArea {
+            width: 900px;
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="showArea">
+        <div class="scroll-table-box">
+            <!-- 表格主体区域 -->
+            <div class="scroll-table-body">
+                <table class="tb1 tb2">
+                    <thead>
+                        <tr>
+                            <th style="width: 10em;">头部1</th>
+                            <th style="width: 8em;">头部2</th>
+                            <th style="width: 5em;">头部3</th>
+                            <th style="width: 4em;">头部4</th>
+                            <th style="width: 9em;">头部5</th>
+                            <th style="width: 9em;">头部6</th>
+                            <th style="width: 9em;">头部7</th>
+                            <th style="width: 9em;">头部8</th>
+                            <th style="width: 9em;">头部9</th>
+                            <th style="width: 9em;">头部10</th>
+                            <th style="width: 9em;">头部11</th>
+                            <th style="width: 9em;">头部12</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">1</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">11</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">2</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">22</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-name="头部1">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部2">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部3">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部4">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部5">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部6">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部7">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部8">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部9">
+                                <div class="td_div">...</div>
+                            </td>
+                            <td data-name="头部10">
+                                <!-- 特殊情况,如果里层是input输入框或者a标签,需要加fix_tab的class -->
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                            </td>
+                            <td data-name="头部11">
+                                <div class="td_div fix_tab">
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td data-name="头部12">
+                                <div class="td_div fix_tab">
+                                    <a>链接</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+$(function () {
+    /*固定表格滑动脚本*/
+	initTable({
+        colNum: 4,//左边固定的列数,默认为0
+        maxHeight: 400,//可视区最大高度,默认400px,低于200px按200px计算
+    });
+})
+
+</script>
+</html>

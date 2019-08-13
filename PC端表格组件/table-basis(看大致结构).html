@@ -9,7 +9,7 @@
     <script src="./js/jquery-1.11.1.js"></script>
     <script src="./js/move.js"></script>
     <script src="./js/table.js"></script>
-    <title>PC端表格组件</title>
+    <title>PC端表格组件(结构)</title>
 </head>
 <body>
     <div class="scroll-table-box">
@@ -51,9 +51,8 @@
 $(function () {
     /*固定表格滑动脚本*/
 	initTable({
-        colNum: 4,//左边固定的列数,默认为0
+        colNum: 2,//左边固定的列数,默认为0
         maxHeight: 400,//可视区最大高度,默认400px,低于200px按200px计算
-        fixThead: false,// 是否为复合型thead,默认为false
     });
 })
 </script>
