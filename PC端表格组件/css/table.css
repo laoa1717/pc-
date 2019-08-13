@@ -275,12 +275,12 @@
 }
 
 /* 自定义样式 */
-.scroll-table-box .tb2 th,
-.scroll-table-box .tb2 td {
+.scroll-table-box .tb_03 th,
+.scroll-table-box .tb_03 td {
   font-size: 12px;
 }
 
-.scroll-table-box .tb2 th {
+.scroll-table-box .tb_03 th {
   color: #333;
   background: #edf6fd;
 }

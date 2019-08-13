@@ -4,7 +4,7 @@ function initTable(init) {
 	}
 	//固定头部
 	var $theadHtml = $(".scroll-table-body").find('thead').clone();
-	var $thead = $('<div class="scroll-table-head"><table class="tb1 tb2"></table></div>');
+	var $thead = $('<div class="scroll-table-head"><table class="tb1 tb_03"></table></div>');
 	$thead.find('table').append($theadHtml);
 	$(".scroll-table-body").before($thead[0]);
 
@@ -33,11 +33,11 @@ function initTable(init) {
 	//左侧固定部分
 	var scrollTableFixedLeftHtml = '<div class="scroll-table-fixed-left hide">\
 										<div class="scroll-table-fixed-left-head">\
-											<table class="tb1 tb2">\
+											<table class="tb1 tb_03">\
 											</table>\
 										</div>\
 										<div class="scroll-table-fixed-left-body">\
-											<table class="tb1 tb2 no_border_top">\
+											<table class="tb1 tb_03 no_border_top">\
 											</table>\
 										</div>\
 									</div>';
@@ -412,13 +412,13 @@ function calThWidth() {
 			colSpanNowIndex++;
 			$.each(array, function (index2, thItem2) {
 				var childObj = {};
-				childObj.width = parseInt($(thItem).css('width')) / array.length;
+				childObj.width = $(thItem).outerWidth() / array.length;
 				childObj.name = $(thItem2).html();
 				thWidth.push(childObj);
 			});
 			return;
 		}
-		thObj.width = parseInt($(thItem).css('width'));
+		thObj.width = $(thItem).outerWidth();
 		thObj.name = $(thItem).html();
 		thWidth.push(thObj);
 	});
