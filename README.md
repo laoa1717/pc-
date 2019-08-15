@@ -18,7 +18,7 @@
 <div class="scroll-table-box">
 	<!-- 表格主体区域 -->
 	<div class="scroll-table-body">
-	    <table class="tb1 tb_03">
+	    <table class="tb1 tb_03"><!-- 注意：如果项目有自己的表格样式，务必写在tb_03类下 -->
 		<thead>
 		    <tr>
 			<!-- <th style="width: 宽度自行定制(必填);">...</th> 例子如下-->
