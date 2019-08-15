@@ -2,6 +2,7 @@ function initTable(init) {
 	if (!init.colNum || init.colNum < 0) {
 		init.colNum = 0;
 	}
+	init.colNum = calColNum(init.colNum);
 	//固定头部
 	var $theadHtml = $(".scroll-table-body").find('thead').clone();
 	var $thead = $('<div class="scroll-table-head"><table class="tb1 tb_03"></table></div>');
@@ -45,10 +46,18 @@ function initTable(init) {
 
 	var cloneThead = $(".scroll-table-body").find('thead').clone();
 	var cloneTbody = $(".scroll-table-body").find('tbody').clone();
+	var $tbody = $('<tbody></tbody>');
+	$(cloneTbody).find('tr').each(function(index, trItem){
+		var $newTr = $('<tr></tr>');
+		$newTr.append($(trItem).find('td').slice(0, init.colNum));
+		$newTr.addClass($(trItem).attr('class'));
+		$tbody.append($newTr);
+	});
+	
 	var thWidth = calThWidth();
 
 	$('.scroll-table-fixed-left-head table').append(cloneThead);
-	$('.scroll-table-fixed-left-body table').append(cloneTbody);
+	$('.scroll-table-fixed-left-body table').append($tbody);
 	$('.scroll-table-fixed-left-body table tr').each(function (index, trItem) {
 		$(trItem).find('td').each(function (index2, tdItem) {
 			$(tdItem).css({
@@ -63,7 +72,7 @@ function initTable(init) {
 		}
 		$('.scroll-table-body').css({ maxHeight: init.maxHeight });
 	}
-	init.colNum = calColNum(init.colNum);
+	
 	tableSwiperFunc(init.colNum);
 	calcRowHeight();
 }
